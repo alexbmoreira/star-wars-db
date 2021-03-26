@@ -8,7 +8,7 @@ function CharacterList() {
   })
 
   return (
-    <div>
+    <div className="mx-auto w-2/3">
       <h1>Character List</h1>
       {characterArray}
     </div>

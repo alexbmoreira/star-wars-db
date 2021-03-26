@@ -5,7 +5,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CharacterList />
+    <div className="h-screen w-screen bg-gray-800 text-white">
+      <CharacterList />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
