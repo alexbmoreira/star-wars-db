@@ -1,4 +1,5 @@
 import CharacterList from './views/CharacterList';
+import CharacterDetail from './views/CharacterDetail';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +12,7 @@ function App() {
         <div className="min-h-screen w-full bg-gray-800 text-white">        
           <Switch>
             <Route path="/character/:id">
-              <h1>Character</h1>
+              <CharacterDetail />
             </Route>
             <Route path="/">
               <CharacterList />
