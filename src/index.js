@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CharacterList from './views/CharacterList';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="h-screen w-screen bg-gray-800 text-white">
-      <CharacterList />
-    </div>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
