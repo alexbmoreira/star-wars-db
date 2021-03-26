@@ -1,10 +1,21 @@
 import CharacterList from './views/CharacterList';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
     return (
-        <div className="min-h-screen w-full bg-gray-800 text-white">
-          <CharacterList />
+      <Router>
+        <div className="min-h-screen w-full bg-gray-800 text-white">        
+          <Switch>
+            <Route path="/">
+              <CharacterList />
+            </Route>
+          </Switch>
         </div>
+      </Router>
     );
 }
   
