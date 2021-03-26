@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 function CharacterDetail() {
 
   const [character, setCharacter] = useState({});
+  const history = useHistory();
   let { id } = useParams();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function CharacterDetail() {
       <div className="mx-auto w-2/3">
         <h1>Character: {id}</h1>
         <h1>Name: {character.name}</h1>
+        <button onClick={history.goBack}>Go back</button>
       </div>
   );
 }

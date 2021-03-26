@@ -1,38 +1,57 @@
 import CharacterListItem from '../components/CharacterListItem'
 
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 
-class CharacterList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      characters: []
-    }
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+function CharacterList() {
+  let url_page = useQuery().get("page");
+  if(!url_page) {
+    url_page = 1
   }
 
-  componentDidMount() {
-    fetch('https://swapi.dev/api/people/?page=1')
+  const [data, setData] = useState([]);
+  const [characters, setCharacters] = useState([]);
+  const history = useHistory();
+
+  const [page, setPage] = useState(url_page);
+
+  useEffect(() => {
+    fetch(`https://swapi.dev/api/people/?page=${page}`)
       .then(res => {
         return res.json()
       })
-      .then(characters => {
-        this.setState({
-          characters: characters.results
-        })
+      .then(d => {
+        setData(d)
+        setCharacters(d.results)
+        history.push(`/?page=${page}`)
       })
+    },
+    [page, history]
+  );
+
+  function incrementPage(inc) {
+    if((data.next && inc > 0) || (data.previous && inc < 0)) {
+      history.push(`/?page=${parseInt(page) + inc}`)
+      setPage(parseInt(page) + inc)
+    }
   }
 
-  render() {
-    const characterArray = this.state.characters.map((character, i) => {
-      return <CharacterListItem key={i} character={this.state.characters[i]} />
-    })
-    return (
-      <div className="mx-auto w-2/3">
-        <h1>Character List</h1>
-        {characterArray}
-      </div>
-    );
-  }
+  const characterArray = characters.map((character, i) => {
+    return <CharacterListItem key={i} character={characters[i]} />
+  })
+
+  return (
+    <div className="mx-auto w-2/3">
+      <h1>Character List</h1>
+      {characterArray}
+      <button onClick={() => incrementPage(-1)}>Click me</button>
+      <button onClick={() => incrementPage(1)}>Click me</button>
+    </div>
+  );
 }
 
 export default CharacterList;
