@@ -11,7 +11,7 @@ class CharacterList extends Component {
   }
 
   componentDidMount() {
-    fetch('https://swapi.dev/api/people/')
+    fetch('https://swapi.dev/api/people/?page=1')
       .then(res => {
         return res.json()
       })
