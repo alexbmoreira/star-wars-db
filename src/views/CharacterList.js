@@ -1,38 +1,42 @@
 import CharacterListItem from '../components/CharacterListItem'
 
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-class CharacterList extends Component {
-  constructor() {
-    super()
-    this.state = {
-      characters: []
-    }
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+function CharacterList() {
+  const [characters, setCharacters] = useState([]);
+  let page = useQuery().get("page") ;
+
+  if(!page) {
+    page = 1
   }
 
-  componentDidMount() {
-    fetch('https://swapi.dev/api/people/?page=1')
+  useEffect(() => {
+    fetch(`https://swapi.dev/api/people/?page=${page}`)
       .then(res => {
         return res.json()
       })
-      .then(characters => {
-        this.setState({
-          characters: characters.results
-        })
+      .then(c => {
+        setCharacters(c.results)
       })
-  }
+    },
+    [page]
+  );
 
-  render() {
-    const characterArray = this.state.characters.map((character, i) => {
-      return <CharacterListItem key={i} character={this.state.characters[i]} />
-    })
-    return (
-      <div className="mx-auto w-2/3">
-        <h1>Character List</h1>
-        {characterArray}
-      </div>
-    );
-  }
+  const characterArray = characters.map((character, i) => {
+    return <CharacterListItem key={i} character={characters[i]} />
+  })
+
+  return (
+    <div className="mx-auto w-2/3">
+      <h1>Character List</h1>
+      {characterArray}
+    </div>
+  );
 }
 
 export default CharacterList;
