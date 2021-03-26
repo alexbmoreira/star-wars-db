@@ -8,13 +8,15 @@ function useQuery() {
 }
 
 function CharacterList() {
+  let url_page = useQuery().get("page");
+  if(!url_page) {
+    url_page = 1
+  }
+
   const [characters, setCharacters] = useState([]);
   const history = useHistory();
 
-  let page = useQuery().get("page");
-  if(!page) {
-    page = 1
-  }
+  const [page, setPage] = useState(url_page);
 
   useEffect(() => {
     fetch(`https://swapi.dev/api/people/?page=${page}`)
@@ -29,6 +31,11 @@ function CharacterList() {
     [page, history]
   );
 
+  function incrementPage(inc) {
+    history.push(`/?page=${parseInt(page) + inc}`)
+    setPage(parseInt(page) + inc)
+  }
+
   const characterArray = characters.map((character, i) => {
     return <CharacterListItem key={i} character={characters[i]} />
   })
@@ -37,6 +44,8 @@ function CharacterList() {
     <div className="mx-auto w-2/3">
       <h1>Character List</h1>
       {characterArray}
+      <button onClick={() => incrementPage(-1)}>Click me</button>
+      <button onClick={() => incrementPage(1)}>Click me</button>
     </div>
   );
 }
