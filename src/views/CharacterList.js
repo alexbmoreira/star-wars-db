@@ -13,6 +13,7 @@ function CharacterList() {
     url_page = 1
   }
 
+  const [data, setData] = useState([]);
   const [characters, setCharacters] = useState([]);
   const history = useHistory();
 
@@ -23,8 +24,9 @@ function CharacterList() {
       .then(res => {
         return res.json()
       })
-      .then(c => {
-        setCharacters(c.results)
+      .then(d => {
+        setData(d)
+        setCharacters(d.results)
         history.push(`/?page=${page}`)
       })
     },
@@ -32,8 +34,10 @@ function CharacterList() {
   );
 
   function incrementPage(inc) {
-    history.push(`/?page=${parseInt(page) + inc}`)
-    setPage(parseInt(page) + inc)
+    if((data.next && inc > 0) || (data.previous && inc < 0)) {
+      history.push(`/?page=${parseInt(page) + inc}`)
+      setPage(parseInt(page) + inc)
+    }
   }
 
   const characterArray = characters.map((character, i) => {
