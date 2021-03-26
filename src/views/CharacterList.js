@@ -1,7 +1,7 @@
 import CharacterListItem from '../components/CharacterListItem'
 
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -9,8 +9,9 @@ function useQuery() {
 
 function CharacterList() {
   const [characters, setCharacters] = useState([]);
-  let page = useQuery().get("page") ;
+  const history = useHistory();
 
+  let page = useQuery().get("page");
   if(!page) {
     page = 1
   }
@@ -22,9 +23,10 @@ function CharacterList() {
       })
       .then(c => {
         setCharacters(c.results)
+        history.push(`/?page=${page}`)
       })
     },
-    [page]
+    [page, history]
   );
 
   const characterArray = characters.map((character, i) => {
