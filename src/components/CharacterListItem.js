@@ -1,13 +1,11 @@
-import './style/CharacterListItem.css'
-
 function CharacterList(props) {
     return (
-        <div className="list-item">
-            <div className="name-year">
-                <h3 className="name">{props.name}</h3>
+        <div className="flex my-2 justify-between">
+            <div className="flex flex-col">
+                <p className="name">{props.name}</p>
                 <p>Born: {props.birth_year}</p>
             </div>
-            <div className="height-weight">
+            <div className="flex flex-col text-right">
                 <p>Height: {props.height}cm</p>
                 <p>Mass: {props.mass}kg</p>
             </div>
