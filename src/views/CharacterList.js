@@ -24,7 +24,7 @@ class CharacterList extends Component {
 
   render() {
     const characterArray = this.state.characters.map((character, i) => {
-      return <CharacterListItem key={i} name={this.state.characters[i].name} birth_year={this.state.characters[i].birth_year} height={this.state.characters[i].height} mass={this.state.characters[i].mass} />
+      return <CharacterListItem key={i} character={this.state.characters[i]} />
     })
     return (
       <div className="mx-auto w-2/3">

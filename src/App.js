@@ -10,6 +10,9 @@ function App() {
       <Router>
         <div className="min-h-screen w-full bg-gray-800 text-white">        
           <Switch>
+            <Route path="/character/:id">
+              <h1>Character</h1>
+            </Route>
             <Route path="/">
               <CharacterList />
             </Route>
