@@ -45,7 +45,7 @@ function CharacterList() {
   })
 
   return (
-    <div className="flex flex-col mx-auto w-2/3">
+    <div className="flex flex-col mx-auto px-4 md:px-32 lg:px-64">
       <div className="flex flex-col divide-solid divide-gray-700 divide-y-2">
         {characterArray}
       </div>
