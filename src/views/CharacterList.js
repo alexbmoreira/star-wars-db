@@ -20,15 +20,15 @@ function CharacterList() {
   const [page, setPage] = useState(url_page);
 
   useEffect(() => {
-    fetch(`https://swapi.dev/api/people/?page=${page}`)
-      .then(res => {
-        return res.json()
-      })
-      .then(d => {
-        setData(d)
-        setCharacters(d.results)
-        history.push(`/?page=${page}`)
-      })
+      fetch(`https://swapi.dev/api/people/?page=${page}`)
+        .then(res => {
+          return res.json()
+        })
+        .then(d => {
+          setData(d)
+          setCharacters(d.results)
+          history.push(`/?page=${page}`)
+        })
     },
     [page, history]
   );
