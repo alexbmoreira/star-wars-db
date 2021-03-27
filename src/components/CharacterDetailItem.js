@@ -1,4 +1,4 @@
-function Header(props) {
+function CharacterDetailItem(props) {
     return (
         <div className="flex justify-between">
           <p>{props.item}:</p>
@@ -7,4 +7,4 @@ function Header(props) {
     );
   }
   
-  export default Header;
+  export default CharacterDetailItem;
