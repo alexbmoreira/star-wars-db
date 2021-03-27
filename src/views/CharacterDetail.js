@@ -59,7 +59,7 @@ function CharacterDetail() {
               <i className="fas fa-chevron-left"></i> Back
             </div>
         </button>
-        {loading ? <div className="flex my-2 animate-pulse"><div className="h-8 mx-auto bg-gray-800 rounded w-1/3"></div></div> : <p className="text-center text-3xl font-bold mb-4">{character.name}</p>}
+        {loading ? <div className="flex my-2 animate-pulse"><div className="h-8 mx-auto bg-gray-800 rounded w-3/4 md:w-1/3"></div></div> : <p className="text-center text-3xl font-bold mb-4">{character.name}</p>}
         <div className="flex flex-col md:space-x-8 md:flex-row">
           <div className="text-center mb-4 md:w-1/3">
             <p className="text-xl border-b-2 border-gray-700">Details</p>
