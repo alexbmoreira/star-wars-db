@@ -46,7 +46,7 @@ function CharacterList() {
 
   return (
     <div className="flex flex-col mx-auto w-2/3">
-      <h1>Character List</h1>
+      <h1 className="sw-font text-center text-5xl text-yellow-400">STAR WARS DB</h1>
       <div className="flex flex-col divide-solid divide-gray-700 divide-y-2">
         {characterArray}
       </div>

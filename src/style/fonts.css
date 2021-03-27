@@ -1,0 +1,14 @@
+/* @font-face {
+    font-family:
+} */
+
+@font-face {
+    font-family: 'STARWARS';
+    src: url('../STARWARS.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sw-font {
+    font-family: 'STARWARS';
+}

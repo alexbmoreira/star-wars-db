@@ -9,7 +9,7 @@ import {
 function App() {
     return (
       <Router>
-        <div className="min-h-screen w-full bg-gray-800 text-white">        
+        <div className="min-h-screen w-full bg-gray-900 text-white">        
           <Switch>
             <Route path="/character/:id">
               <CharacterDetail />
