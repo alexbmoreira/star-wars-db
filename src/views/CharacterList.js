@@ -13,6 +13,7 @@ function CharacterList() {
     url_page = 1
   }
 
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [characters, setCharacters] = useState([]);
   const history = useHistory();
@@ -27,6 +28,7 @@ function CharacterList() {
         .then(d => {
           setData(d)
           setCharacters(d.results)
+          setLoading(false)
           history.push(`/?page=${page}`)
         })
     },
@@ -66,6 +68,7 @@ function CharacterList() {
           </div>
         </button>
       </div>
+      <h1>{loading ? "Loading...": ""}</h1>
     </div>
   );
 }
