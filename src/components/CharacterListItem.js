@@ -1,9 +1,7 @@
 import { Component } from "react";
-import {
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-class CharacterList extends Component {
+class CharacterListItem extends Component {
     render() {
         const swReg = /http:\/\/swapi.dev\/api\/people\/([0-9]+)/
         const swUrl = this.props.character.url
@@ -29,5 +27,5 @@ class CharacterList extends Component {
     }
 }
   
-export default CharacterList;
+export default CharacterListItem;
   
