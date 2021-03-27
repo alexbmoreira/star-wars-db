@@ -8,7 +8,7 @@ function CharacterDetail() {
 
   const [loading, setLoading] = useState(true);
   const [character, setCharacter] = useState({});
-  const [species, setSpecies] = useState({"name": "n/a", "language": "n/a", "classification": "n/a"});
+  const [species, setSpecies] = useState({"name": "n/a", "language": "n/a"});
   const [homeWorld, setHomeWorld] = useState({});
   const history = useHistory();
   let { id } = useParams();
@@ -27,8 +27,7 @@ function CharacterDetail() {
 
   useEffect(() => {
     if(Object.keys(character).length > 0) {
-      console.log(character)
-      if(character.species && character.species.length > 1) {
+      if(character.species && character.species.length >= 1) {
         fetch(character.species[0])
           .then(res => {
             return res.json()
@@ -45,9 +44,9 @@ function CharacterDetail() {
           })
           .then(h => {
             setHomeWorld(h)
+            setLoading(false)
           })
       }
-      setLoading(false)
     }
     },
     [character]
@@ -76,7 +75,6 @@ function CharacterDetail() {
             <p className="text-xl border-b-2 border-gray-700">Species</p>
             {loading ? <CharacterDetailSkeleton /> : <CharacterDetailItem item="Species" data={species.name} />}
             {loading ? <CharacterDetailSkeleton /> : <CharacterDetailItem item="Language" data={species.language} />}
-            {loading ? <CharacterDetailSkeleton /> : <CharacterDetailItem item="Language" data={species.classification} />}
           </div>
           <div className="text-center mb-4 md:w-1/3">
             <p className="text-xl border-b-2 border-gray-700">Home Planet</p>
