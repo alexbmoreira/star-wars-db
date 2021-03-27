@@ -8,7 +8,7 @@ function CharacterDetail() {
 
   const [loading, setLoading] = useState(true);
   const [character, setCharacter] = useState({});
-  const [species, setSpecies] = useState({});
+  const [species, setSpecies] = useState({"name": "n/a", "language": "n/a", "classification": "n/a"});
   const [homeWorld, setHomeWorld] = useState({});
   const history = useHistory();
   let { id } = useParams();
