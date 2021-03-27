@@ -17,11 +17,11 @@ class CharacterList extends Component {
                 <div className="flex my-2 justify-between">
                     <div className="flex flex-col">
                         <p className="text-xl font-bold">{this.props.character.name}</p>
-                        <p className="text-sm">Born: {this.props.character.birth_year}</p>
+                        <p className="text-sm text-gray-400">Born: <span className="italic">{this.props.character.birth_year}</span></p>
                     </div>
                     <div className="flex flex-col text-right">
-                        <p className="text-gray-300 text-sm">Height: {this.props.character.height}{heightUnits}</p>
-                        <p className="text-gray-300 text-sm">Mass: {this.props.character.mass}{massUnits}</p>
+                        <p className="text-gray-500 text-sm">Height: {this.props.character.height}{heightUnits}</p>
+                        <p className="text-gray-500 text-sm">Mass: {this.props.character.mass}{massUnits}</p>
                     </div>
                 </div>
             </Link>

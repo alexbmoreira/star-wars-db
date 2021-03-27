@@ -47,7 +47,9 @@ function CharacterList() {
   return (
     <div className="mx-auto w-2/3">
       <h1>Character List</h1>
-      {characterArray}
+      <div className="flex flex-col divide-solid divide-gray-700 divide-y-2">
+        {characterArray}
+      </div>
       <button onClick={() => incrementPage(-1)}>Click me</button>
       <button onClick={() => incrementPage(1)}>Click me</button>
     </div>
