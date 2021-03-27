@@ -1,4 +1,5 @@
 import CharacterListItem from '../components/CharacterListItem'
+import CharacterListSkeleton from '../components/CharacterListSkeleton'
 
 import { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -37,6 +38,7 @@ function CharacterList() {
 
   function incrementPage(inc) {
     if((data.next && inc > 0) || (data.previous && inc < 0)) {
+      setLoading(true);
       history.push(`/?page=${parseInt(page) + inc}`)
       setPage(parseInt(page) + inc)
     }
@@ -46,10 +48,14 @@ function CharacterList() {
     return <CharacterListItem key={i} character={characters[i]} />
   })
 
+  const characterSkeletonArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value, i) => {
+    return <CharacterListSkeleton key={i} />
+  })
+
   return (
     <div className="flex flex-col mx-auto px-4 md:px-32 lg:px-64">
       <div className="flex flex-col divide-solid divide-gray-700 divide-y-2">
-        {characterArray}
+        {loading ? characterSkeletonArray : characterArray}
       </div>
       <div className="flex mx-auto space-x-4">
         <button onClick={() => incrementPage(-1)}>
@@ -68,7 +74,6 @@ function CharacterList() {
           </div>
         </button>
       </div>
-      <h1>{loading ? "Loading...": ""}</h1>
     </div>
   );
 }
