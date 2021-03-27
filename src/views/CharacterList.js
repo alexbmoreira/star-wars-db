@@ -45,13 +45,28 @@ function CharacterList() {
   })
 
   return (
-    <div className="mx-auto w-2/3">
+    <div className="flex flex-col mx-auto w-2/3">
       <h1>Character List</h1>
       <div className="flex flex-col divide-solid divide-gray-700 divide-y-2">
         {characterArray}
       </div>
-      <button onClick={() => incrementPage(-1)}>Click me</button>
-      <button onClick={() => incrementPage(1)}>Click me</button>
+      <div className="flex mx-auto space-x-4">
+        <button onClick={() => incrementPage(-1)}>
+          <div className="flex w-8 h-8 bg-gray-700 rounded">
+            <div className="mx-auto my-auto">
+              <i className="fas fa-chevron-left"></i>
+            </div>
+          </div>
+        </button>
+        <p className="inline-block align-middle">Page {page}</p>
+        <button onClick={() => incrementPage(1)}>
+          <div className="flex w-8 h-8 bg-gray-700 rounded">
+            <div className="mx-auto my-auto">
+              <i className="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </button>
+      </div>
     </div>
   );
 }
