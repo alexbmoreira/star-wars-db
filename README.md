@@ -14,6 +14,11 @@ npm install
 npm run start
 ```
 
+### Building For Production
+```
+npm run build
+```
+
 ## About Star Wars DB
 
 ### The Problem
