@@ -25,7 +25,7 @@ Build a web app that does the following:
 
 ### The Solution
 
-Use the Fetch API to communicate with SWAPI.dev, then create a single-page application with React to display it. The app uses React Router hooks to navigate between pages and keep track of which page the user is on.
+Use the Fetch API to communicate with SWAPI.dev, then create a single-page application with React to display it. The app uses React Router and React Hooks to navigate between pages and keep track of which page the user is on.
 
 ### Technical Decisions
 
@@ -37,4 +37,4 @@ Components are structured in a way that uses container components to handle how 
 
 If I were to spend more time on the project I would first work to clean up code and modularize where I can. One example is that the fetch calls take place inside each component, but it would be better to have that code moved to a separate module. This would allow for reusability if necessary, while also making the code more readable and easier to understand.
 
-If I wanted to add more features to the app like users liking characters, I could use Redux for state management instead of react hooks. I can better act as a single source of truth for the app's state, and is likely a more scalable option over hooks for a larger app.
+If I wanted to add more features to the app like users liking characters, I could use Redux for state management instead of react hooks. It can better act as a single source of truth for the app's state, and is likely a more scalable option over hooks for a larger app.
